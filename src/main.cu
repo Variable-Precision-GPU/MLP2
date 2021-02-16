@@ -107,7 +107,9 @@ int main(int argc, char *argv[]) {
 
   // Prepare model
   SequentialModel* model = new SequentialModel(optimizer, loss);
-  model->addLayer(new DenseLayer(28*28, 128));
+  model->addLayer(new DenseLayer(28*28, 256));
+  model->addLayer(new ReLuLayer(256));
+  model->addLayer(new DenseLayer(256, 128));
   model->addLayer(new ReLuLayer(128));
   model->addLayer(new DenseLayer(128, 64));
   model->addLayer(new ReLuLayer(64));
